@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.live.sapphire.app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+        <activity android:name=".activities.LauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CategoriesActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.SubcategoriesActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.ChildCategoriesActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.LinksLoaderActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.PlayListsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.VideosActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.FlussonicActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.FilmonActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.WebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.AndroidNativePlayerActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.YoutubePlayerActivity"
+            android:configChanges="orientation|screenSize"
+            android:label=""
+            android:screenOrientation="unspecified" />
+        <activity
+            android:name=".activities.ExoPlayerActivity"
+            android:label="@string/title_activity_exo_player"/>
+    </application>
+
+</manifest>

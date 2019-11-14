@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true"
+    tools:context="com.live.sapphire.app.activities.WebViewActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/sapphire_header"
+        android:minHeight="?attr/actionBarSize" />
+
+    <TextView
+        android:id="@+id/marquee_text_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_web_view"
+        android:layout_centerHorizontal="true"
+        android:ellipsize="marquee"
+        android:fadingEdge="horizontal"
+        android:gravity="center"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/blue"
+        android:textSize="@dimen/marquee_player_text_size" />
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/marquee_text_web_view"
+        android:background="@android:color/black" />
+
+</RelativeLayout>

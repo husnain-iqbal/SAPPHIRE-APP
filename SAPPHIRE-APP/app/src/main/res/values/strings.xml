@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">SAPPHIRE-TV</string>
+    <string name="title_activity_categories">Categories Activity</string>
+    <string name="title_activity_subcategories">Subcategories Activity</string>
+    <string name="title_activity_inlinks">Individual Links Activity</string>
+    <string name="title_activity_channels">Channels Activity</string>
+    <string name="title_activity_play_lists">PlayLists Activity</string>
+    <string name="title_activity_android_player">Android Player</string>
+    <string name="title_activity_vitamio_player">VitamioPlayer Activity</string>
+    <string name="title_activity_exo_player">ExoPlayer Activity</string>
+    <string name="title_activity_youtube_player">YoutubePlayer Activity</string>
+    <string name="list_view_row_content_description">ListView Row</string>
+    <string name="button_text">Button</string>
+    <string name="title_logo">NATIONAL GEOGRAPHIC</string>
+    <string name="btn_skip_intro">Skip Intro</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="title_activity_videos">VideosActivity</string>
+    <string name="title_activity_launcher">LauncherActivity</string>
+    <string name="title_activity_other_links">OtherLinksActivity</string>
+    <string name="title_activity_child_categories">ChildCategoriesActivity</string>
+    <string name="title_activity_filmon">FilmonActivity</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="title_activity_flussonic">FlussonicActivity</string>
+    <string name="title_activity_bright_cove_exo_player">BrightCoveExoPlayer</string>
+
+</resources>

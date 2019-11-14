@@ -1,0 +1,74 @@
+package com.live.sapphire.app.activities;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import com.brightcove.player.model.Video;
+import com.brightcove.player.view.BrightcoveExoPlayerVideoView;
+import com.brightcove.player.view.BrightcovePlayer;
+import com.live.sapphire.app.Customized.FilmonInfo;
+import com.live.sapphire.app.Customized.StreamInfo;
+import com.live.sapphire.app.R;
+import com.live.sapphire.app.Utilities;
+
+import java.util.HashMap;
+
+public class BrightCoveExoPlayerActivity extends BrightcovePlayer {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bright_cove_exo_player);
+        TextView videoInfoTextView = (TextView) findViewById(R.id.marquee_text_brightcove_exo_player);
+        BrightcoveExoPlayerVideoView brightcoveVideoView = (BrightcoveExoPlayerVideoView) findViewById(R.id.brightcove_video_view);
+
+        Intent intent = getIntent();
+        if (intent.hasExtra(FlussonicActivity.VIDEO_URL_TEXT) && intent.hasExtra(FlussonicActivity.VIDEO_TITLE_TEXT)) { //TODO: For InLinks -> Flussonic videos
+            String videoLink = intent.getStringExtra(FlussonicActivity.VIDEO_URL_TEXT);
+            String videoTitle = intent.getStringExtra(FlussonicActivity.VIDEO_TITLE_TEXT);
+            videoInfoTextView.setText(videoTitle);
+            brightcoveVideoView.add(Video.createVideo(videoLink));
+        } else if (intent.hasExtra(FilmonActivity.FILMON_BUNDLE)) { //TODO: For OtherLinks -> Filmon videos
+            Bundle bundle = intent.getBundleExtra(FilmonActivity.FILMON_BUNDLE);
+            FilmonInfo filmonInfo = (FilmonInfo) bundle.getSerializable(FilmonActivity.FILMON_INFO_TEXT);
+            if (filmonInfo != null) {
+                HashMap<String, StreamInfo> streamRecords = filmonInfo.getStreamRecords();
+                if (streamRecords != null) {
+                    StreamInfo streamInfo = new StreamInfo();
+                    if (streamRecords.containsKey(Utilities.FILMON_VIDEO_QUALITY_LOW)) {
+                        streamInfo = streamRecords.get(Utilities.FILMON_VIDEO_QUALITY_LOW);
+                    } else if (streamRecords.containsKey(Utilities.FILMON_VIDEO_QUALITY_HIGH)) {
+                        streamInfo = streamRecords.get(Utilities.FILMON_VIDEO_QUALITY_HIGH);
+                    } else if (streamRecords.size() > 0) {
+                        streamInfo = (StreamInfo) streamRecords.values().toArray()[0];
+                    }
+
+                    videoInfoTextView.setText(filmonInfo.getTitle());
+                    brightcoveVideoView.add(Video.createVideo(streamInfo.getUrl()));
+                }
+            }
+        }
+//        else if (intent.hasExtra(LinksLoaderActivity.LINKS_LOADER_INFO_BUNDLE)) {//TODO: Other Links -> Karwan Videos "NOT WORKING..."
+//            Bundle bundle = intent.getBundleExtra(LinksLoaderActivity.LINKS_LOADER_INFO_BUNDLE);
+//            LinkInfoContainer linkInfo = (LinkInfoContainer) bundle.getSerializable(LinksLoaderActivity.LINKS_LOADER_INFO_TEXT);
+//            if (linkInfo == null) {
+//                Utilities.showLongToast(BrightCoveExoPlayerActivity.this, "Video Link is empty");
+//            } else {
+//                if (linkInfo.getSource().equalsIgnoreCase(Utilities.SOURCE_KARWAN_TEXT)) {
+//                    videoInfoTextView.setText(linkInfo.getTitle());
+//                    brightcoveVideoView.add(Video.createVideo(linkInfo.getUrl()));
+//                }
+//            }
+//        } else if (intent.hasExtra(VideosActivity.VIDEOS_BUNDLE_TEXT)) { //TODO: For simple Videos "NOT WORKING..."
+//            Bundle bundle = intent.getBundleExtra(VideosActivity.VIDEOS_BUNDLE_TEXT);
+//            VideoInfo videoInfo = (VideoInfo) bundle.getSerializable(VideosActivity.VIDEOS_INFO_TEXT);
+//            if (videoInfo != null) {
+//                String videoLink = Utilities.getVideoUrl(videoInfo.getVideoId());
+//                videoInfoTextView.setText(videoInfo.getTitle());
+//                brightcoveVideoView.add(Video.createVideo(videoLink));
+//            }
+//        }
+        brightcoveVideoView.start();
+    }
+}
